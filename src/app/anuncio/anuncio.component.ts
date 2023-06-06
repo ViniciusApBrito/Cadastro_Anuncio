@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AnunciosService } from '../anuncios.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { anuncio } from '../anuncios';
 @Component({
   selector: 'app-anuncio',
   templateUrl: './anuncio.component.html',
-  styleUrls: ['./anuncio.component.css']
+  styleUrls: ['./anuncio.component.css'],
 })
 export class AnuncioComponent {
   anuncios: anuncio[] = [];
@@ -20,13 +25,12 @@ export class AnuncioComponent {
   ) {
     this.formGroupAnuncio = this.formBuilder.group({
       id: [''],
-      title: ['',Validators.required],
-      description: ['',Validators.required],
-      price: ['',Validators.required],
-      date: ['',Validators.required],
-      status: ['',Validators.required],
-      image: ['',Validators.required],
-
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      date: ['', [Validators.required]],
+      status: ['', [Validators.required]],
+      image: ['', [Validators.required]],
     });
   }
 
@@ -36,46 +40,43 @@ export class AnuncioComponent {
 
   loadAnuncios() {
     this.anunciosService.getAnuncios().subscribe({
-      next: data => this.anuncios = data
+      next: (data) => (this.anuncios = data),
     });
   }
 
   save() {
     this.submitted = true;
-    if(this.formGroupAnuncio.valid)
-    {
+    if (this.formGroupAnuncio.valid) {
+      if (this.isEditing) {
+        this.anunciosService.edit(this.formGroupAnuncio.value).subscribe({
+          next: () => {
+            this.loadAnuncios();
+            this.formGroupAnuncio.reset();
+            this.isEditing = false;
+          },
+        });
+      } else {
+        this.anunciosService.save(this.formGroupAnuncio.value).subscribe({
+          next: (data) => {
+            this.anuncios.push(data);
+            this.formGroupAnuncio.reset();
+          },
+        });
+      }
 
-    if (this.isEditing) {
-      this.anunciosService.edit(this.formGroupAnuncio.value).subscribe({
-        next: () => {
-          this.loadAnuncios();
-          this.formGroupAnuncio.reset();
-          this.isEditing = false;
-        }
-      })
-    } else {
-      this.anunciosService.save(this.formGroupAnuncio.value).subscribe({
-        next: (data) => {
-          this.anuncios.push(data);
-          this.formGroupAnuncio.reset();
-        }
-      })
+      this.submitted = false;
     }
-
-    this.submitted = false;
-  }
   }
 
   edit(anuncio: anuncio) {
-
     this.formGroupAnuncio.setValue(anuncio);
     this.isEditing = true;
   }
 
   delete(anuncio: anuncio) {
     this.anunciosService.delete(anuncio).subscribe({
-      next: () => this.loadAnuncios()
-    })
+      next: () => this.loadAnuncios(),
+    });
   }
 
   clean() {
@@ -96,7 +97,6 @@ export class AnuncioComponent {
     return this.formGroupAnuncio.get('description');
   }
 
-
   get date(): any {
     return this.formGroupAnuncio.get('date');
   }
@@ -108,5 +108,4 @@ export class AnuncioComponent {
   get image(): any {
     return this.formGroupAnuncio.get('image');
   }
-
 }
