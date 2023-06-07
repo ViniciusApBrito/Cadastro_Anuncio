@@ -1,113 +1,107 @@
-<div class="bg-dark mt-5 container rounded p-5">
+<div class="bg-white mt-5 container rounded p-5 border">
     <div class="row">
-        <div class="display-7 text-center text-white">
-            <h3 class="text-white mb-4">Cadastro de anúncio</h3>
-            <form [formGroup]="formGroupAnuncio">
-
-                <div class="mb-3">
-                    <label for="title" class="form-label">Titulo</label>
-                    <input type="text" formControlName="title" class="form-control" id="title"
-                        placeholder="Digite o titulo">
-                    <div *ngIf="submitted && title.invalid">
-                        <small class="text-danger">TITULO INVALIDO!</small>
-                    </div>
-
-                </div>
-
-                <div class="mb-3">
-                    <label for="description" class="form-label">Descrição</label>
-                    <input type="text" formControlName="description" class="form-control" id="description"
-                        placeholder="Digite a descrição">
-                    <div *ngIf="submitted && description.invalid">
-                        <small class="text-danger">DESCRIÇÃO INVALIDA!</small>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="date" class="form-label">Data de validade</label>
-                    <input type="date" formControlName="date" class="form-control" id="date"
-                        placeholder="Digite a data de validade">
-                    <div *ngIf="submitted && date.invalid">
-                        <small class="text-danger">DATA INVALIDA!</small>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="price" class="form-label">Preço</label>
-                    <input type="text" formControlName="price" class="form-control" id="price"
-                        placeholder="Digite o preço">
-                    <div *ngIf="submitted && price.invalid">
-                        <small class="text-danger">PREÇO INVALIDO!</small>
-                    </div>
-                </div>
-
-                <h6 class="form-label text-start">Status</h6>
-                <div class="form-check text-start">
-                    <input class="form-check-input justify-left" type="radio" formControlName="status" value="Ativo"
-                        id="flexRadioDefault1" />
-                    <label class="form-check-label text-white" for="flexRadioDefault1">
-                        Ativo
-                    </label>
-                </div>
-                <div class="form-check text-start">
-                    <input class="form-check-input" type="radio" formControlName="status" value="Desativo"
-                        id="flexRadioDefault2" checked />
-                    <label class="form-check-label text-white" for="flexRadioDefault2">
-                        Desativo
-                    </label>
-                    <div *ngIf="submitted && status.invalid">
-                        <small class="text-danger">STATUS INVALIDO!</small>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Imagem</label>
-                    <input type="text" formControlName="image" class="form-control" id="image"
-                        placeholder="Digite o url da imagem">
-                    <div *ngIf="submitted && image.invalid">
-                        <small class="text-danger">IMAGEM INVALIDA!</small>
-                    </div>
-                </div>
-
-                <div>
-                    <button class="btn btn-primary m-3" (click)="save()">Salvar</button>
-                    <button class="btn btn-primary" (click)="clean()">Limpar</button>
-                </div>
-
-            </form>
-
-        </div>
+      <div class="display-7 text-center text-dark">
+        <h3 class="text-dark mb-4">Cadastro de anúncio</h3>
+        <form [formGroup]="formGroupAnuncio">
+  
+          <div class="mb-3">
+            <label for="title" class="form-label">Titulo</label>
+            <input type="text" formControlName="title" class="form-control" id="title" placeholder="Digite o titulo">
+            <div *ngIf="submitted && title.invalid">
+              <small class="text-danger">TITULO INVALIDO!</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="description" class="form-label">Descrição</label>
+            <input type="text" formControlName="description" class="form-control" id="description"
+              placeholder="Digite a descrição">
+            <div *ngIf="submitted && description.invalid">
+              <small class="text-danger">DESCRIÇÃO INVALIDA!</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="date" class="form-label">Data de validade</label>
+            <input type="date" formControlName="date" class="form-control" id="date"
+              placeholder="Digite a data de validade">
+            <div *ngIf="submitted && date.invalid">
+              <small class="text-danger">DATA INVALIDA!</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="price" class="form-label">Preço</label>
+            <input type="text" formControlName="price" class="form-control" id="price" placeholder="Digite o preço">
+            <div *ngIf="submitted && price.invalid">
+              <small class="text-danger">PREÇO INVALIDO!</small>
+            </div>
+          </div>
+  
+          <h6 class="form-label text-start">Status</h6>
+          <div class="form-check text-start">
+            <input class="form-check-input justify-left" type="radio" formControlName="status" value="Ativo"
+              id="flexRadioDefault1" />
+            <label class="form-check-label text-dark" for="flexRadioDefault1">
+              Ativo
+            </label>
+          </div>
+          <div class="form-check text-start">
+            <input class="form-check-input" type="radio" formControlName="status" value="Desativo" id="flexRadioDefault2"
+              checked />
+            <label class="form-check-label text-dark" for="flexRadioDefault2">
+              Desativo
+            </label>
+            <div *ngIf="submitted && status.invalid">
+              <small class="text-danger">STATUS INVALIDO!</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Imagem</label>
+            <input type="text" formControlName="image" class="form-control" id="image"
+              placeholder="Digite o url da imagem">
+            <div *ngIf="submitted && image.invalid">
+              <small class="text-danger">IMAGEM INVALIDA!</small>
+            </div>
+          </div>
+  
+          <div>
+            <button class="btn btn-primary m-3" (click)="save()">Salvar</button>
+            <button class="btn btn-primary" (click)="clean()">Limpar</button>
+          </div>
+  
+        </form>
+  
+      </div>
     </div>
-    <table class="table table-dark mt-3">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Data de validade</th>
-                <th scope="col">Status</th>
-                <th scope="col">Imagem</th>
-                <th scope="col">Opções</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let anuncio of anuncios">
-                <th scope="row">{{anuncio.id}}</th>
-                <td>{{anuncio.title}}</td>
-                <td>{{anuncio.description}}</td>
-                <td>{{anuncio.price}}</td>
-                <td>
-                    {{ anuncio.date}}
-                </td>
-                <td>{{anuncio.status}}</td>
-
-                <td>{{anuncio.image | slice:0:40 }}</td>
-                <td>
-                    <button class="btn btn-warning me-2" (click)="edit(anuncio)">Editar</button>
-                    <button class="btn btn-danger" (click)="delete(anuncio)">Deletar</button>
-                </td>
-            </tr>
-        </tbody>
+    <table class="table table-white mt-3" style="background-color: #fff;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Data de validade</th>
+          <th scope="col">Status</th>
+          <th scope="col">Imagem</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let anuncio of anuncios">
+          <th scope="row">{{anuncio.id}}</th>
+          <td>{{anuncio.title}}</td>
+          <td>{{anuncio.description}}</td>
+          <td>{{anuncio.price}}</td>
+          <td>{{anuncio.date}}</td>
+          <td>{{anuncio.status}}</td>
+          <td>{{anuncio.image | slice:0:40 }}</td>
+          <td>
+            <button class="btn btn-warning me-2" (click)="edit(anuncio)">Editar</button>
+            <button class="btn btn-danger" (click)="delete(anuncio)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-
-</div>
+  </div>
+  

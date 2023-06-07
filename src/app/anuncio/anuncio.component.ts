@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnunciosService } from '../anuncios.service';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators,} from '@angular/forms';
 import { anuncio } from '../anuncios';
 @Component({
   selector: 'app-anuncio',

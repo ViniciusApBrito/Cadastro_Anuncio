@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { anuncio } from '../anuncios';
+import { AnunciosService } from '../anuncios.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -6,6 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-anuncio: any;
+  anuncios: anuncio[] = [];
+
+  constructor(private anunciosService: AnunciosService){}
+
+
+  ngOnInit(): void {
+    this.loadAnuncios();
+  }
+
+  loadAnuncios() {
+    this.anunciosService.getAnuncios().subscribe({
+      next: (data) => (this.anuncios = data),
+    });
+  }
 
 }

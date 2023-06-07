@@ -1,15 +1,15 @@
-<div class="row justify-content-center">
-    <div class="container text-start d-flex  flex-wrap">
-
-    <div *ngFor="let x of anuncio"  class="card m-2">
-      <img src='{{anuncio.image}}' class="card-img-top" alt="A imagem do carro">
-
-      <div class="card-body  bg-dark">
-        <h5 class="card-title text-white">Titulo: {{anuncio.title}}</h5>
-        <p class="card-text text-white">Descrição: {{anuncio.description}}</p>
-        <p class="card-text text-white">Data: {{anuncio.date}}</p>
-        <p class="card-text text-white">Preço: {{anuncio.price}}</p>
-        <p class="card-text text-white">Status: {{anuncio.status}}</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div *ngFor="let anuncio of anuncios" class="col-md-4 mb-4">
+      <div class="card" style="width: 100%; background-color: #fff;">
+        <img src="{{ anuncio.image }}" class="card-img-top" alt="A imagem do carro" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 20px;">{{ anuncio.title }}</h5>
+          <p class="card-text" style="font-size: 16px;">{{ anuncio.description }}</p>
+          <p class="card-text" style="font-size: 14px;">Data: {{ anuncio.date }}</p>
+          <p class="card-text" style="font-size: 14px;">Preço: {{ anuncio.price }}</p>
+          <p class="card-text" style="font-size: 14px;">Status: {{ anuncio.status }}</p>
+        </div>
       </div>
     </div>
   </div>
